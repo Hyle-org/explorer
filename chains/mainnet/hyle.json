@@ -1,0 +1,23 @@
+{
+    "chain_name": "hyle",
+    "api": [
+        {
+            "address": "http://localhost:1317", 
+            "provider": "localhost"
+        }
+    ], 
+    "features": ["dashboard", "blocks", "ibc", "uptime", "parameters", "state-sync", "consensus", "supply", "widget"],
+    "sdk_version": "0.50.1",
+    "coin_type": "118",
+    "min_tx_fee": "8000",
+    "assets": [{
+        "base": "hyle",
+        "symbol": "HYLE",
+        "exponent": "6",
+        "coingecko_id": "hyle",
+        "logo": "/logos/hyle.svg"
+    }],
+    "addr_prefix": "hyle",
+    "theme_color": "#e0482e",
+    "logo": "/logos/hyle.png"
+}
