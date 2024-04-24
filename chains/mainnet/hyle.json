@@ -2,8 +2,8 @@
     "chain_name": "hyle",
     "api": [
         {
-            "address": "http://localhost:1317", 
-            "provider": "localhost"
+            "address": "https://testnet.hyle.eu/rest",
+            "provider": "hyle"
         }
     ], 
     "features": ["dashboard", "blocks", "ibc", "uptime", "parameters", "state-sync", "consensus", "supply", "widget"],
