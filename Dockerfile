@@ -1,20 +1,3 @@
-# FROM node:alpine
-
-# WORKDIR /app
-
-# COPY package.json yarn.lock ./
-
-# RUN yarn install
-
-# COPY . .
-
-# RUN yarn build
-# RUN yarn --ignore-engines
-
-# EXPOSE 80
-
-# CMD ["yarn", "serve"]
-
 FROM node:alpine
 COPY ./ /explorer
 WORKDIR /explorer
