@@ -60,3 +60,6 @@ export interface PaginabledContracts extends PaginatedResponse {
   // return type of cosmwasm_wasm_contracts_creator
   contract_addresses?: string[];
 }
+export interface PaginabledContractList extends PaginatedResponse {
+  contracts: string[];
+}

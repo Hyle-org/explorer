@@ -7,7 +7,7 @@
     "parameters": "Parameters",
     "uptime": "Uptime",
     "state-sync": "State Sync",
-    "cosmwasm": "Contracts",
+    "contracts": "Contracts",
     "widget": "Widgets",
     "tx": "Transactions",
     "ibc": "IBC",
@@ -106,6 +106,7 @@
   },
   "cosmwasm": {
     "title": "Hyle Contracts",
+    "contract_name": "Contract Name",
     "code_id": "Code Id",
     "code_hash": "Code Hash",
     "creator": "Creator",

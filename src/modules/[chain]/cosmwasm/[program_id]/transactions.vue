@@ -151,6 +151,7 @@ const result = ref({});
 
         <div class="text-center mb-4">
             <RouterLink :to="`../${info.program_id}/contracts`"><span class="btn btn-xs text-xs mr-2"> Back </span> </RouterLink>
+            <!--
             <label @click="showFunds()" for="modal-contract-funds" class="btn btn-primary btn-xs text-xs mr-2">{{
                 $t('cosmwasm.btn_funds') }}</label>
             <label class="btn btn-primary btn-xs text-xs mr-2" for="modal-contract-states" @click="showState()">
@@ -178,6 +179,7 @@ const result = ref({});
                 @click="dialog.open('wasm_clear_admin', { contract: contractName })">
                 {{ $t('cosmwasm.btn_clear_admin') }}
             </label>
+            -->
 
         </div>
 
@@ -193,6 +195,7 @@ const result = ref({});
                     </tr>
                 </thead>
                 <tbody>
+                    <p>(Coming soon)</p>
                     <tr v-for="resp in txs?.tx_responses">
                         <td>{{ resp.height }}</td>
                         <td>

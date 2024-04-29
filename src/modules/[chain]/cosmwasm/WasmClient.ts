@@ -8,6 +8,7 @@ import type {
   PaginabledContractHistory,
   PaginabledContracts,
   PaginabledContractStates,
+  PaginabledContractList,
   WasmParam,
 } from './types';
 import { toBase64 } from '@cosmjs/encoding';
@@ -27,6 +28,7 @@ export interface WasmRequestRegistry extends AbstractRegistry {
     cosmwasm_contract_smart_query_data: Request<any>;
     cosmwasm_contract_state: Request<PaginabledContractStates>;
     cosmwasm_wasm_contracts_creator: Request<PaginabledContracts>;
+    cosmwasm_contractlist: Request<PaginabledContractList>;
   }
   
   export const DEFAULT_VERSION: WasmRequestRegistry = {
@@ -61,6 +63,10 @@ export interface WasmRequestRegistry extends AbstractRegistry {
       url: '/hyle/hyle/zktx/v1/contracts/creator/{creator_address}',
       adapter,
     },
+    cosmwasm_contractlist: {
+      url: '/hyle/hyle/zktx/v1/contracts',
+      adapter,
+    }
   };
   
   export class WasmRestClient extends BaseRestClient<WasmRequestRegistry> {
@@ -113,6 +119,11 @@ export interface WasmRequestRegistry extends AbstractRegistry {
       return this.request(this.registry.cosmwasm_contract_state, {
         address,
       }, query);
+    }
+    getWasmContractList(pr?: PageRequest) {
+      // if(!pr) pr = new PageRequest()
+      // const query = `?${pr.toQueryString()}`
+      return this.request(this.registry.cosmwasm_contractlist, {}, /*query*/);
     }
   }
   

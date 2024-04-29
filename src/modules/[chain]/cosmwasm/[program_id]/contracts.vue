@@ -92,6 +92,7 @@ function showInfo(address: string) {
             :total="response.pagination?.total"
             :callback="loadContract"
           />
+          <!--
           <label
             for="wasm_instantiate_contract"
             class="btn btn-primary my-5"
@@ -102,6 +103,7 @@ function showInfo(address: string) {
             "
             >{{ $t('cosmwasm.instantiate_contract') }}</label
           >
+          -->
         </div>
       </div>
     </div>
