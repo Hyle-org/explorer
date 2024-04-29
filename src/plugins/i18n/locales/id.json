@@ -7,7 +7,7 @@
       "parameters": "Parameter",
       "uptime": "Pemantauan",
       "state-sync": "State Sync",
-      "cosmwasm": "Cosmwasm",
+      "cosmwasm": "Contracts",
       "widget": "Widgets",
       "ibc": "IBC",
       "consensus": "Konsensus",
@@ -99,7 +99,7 @@
       "tips_description_2": "Jika Anda ingin mengubah titik akhir rpc bawaan. pastikan bahwa `https` dan `CORS` diaktifkan pada server Anda."
     },
     "cosmwasm": {
-      "title": "Cosmos Wasm Smart Contracts",
+      "title": "Hyle Contracts",
       "code_id": "Kode Id",
       "code_hash": "Kode Hash",
       "creator": "Pencipta",
