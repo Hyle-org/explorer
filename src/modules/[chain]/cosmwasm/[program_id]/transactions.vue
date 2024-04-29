@@ -13,7 +13,6 @@ import { post } from '@/libs';
 import { JsonViewer } from "vue3-json-viewer"
 // if you used v1.0.5 or latster ,you should add import "vue3-json-viewer/dist/index.css"
 import "vue3-json-viewer/dist/index.css";
-import WasmVerification from '@/components/WasmVerification.vue';
 
 const chainStore = useBlockchain();
 const baseStore = useBaseStore();
@@ -34,28 +33,28 @@ const state = ref({} as PaginabledContractStates);
 const selected = ref('');
 const balances = ref({} as PaginatedBalances)
 
-const contractAddress = String(route.query.contract)
+const contractName = String(route.query.contract)
 
 const history = JSON.parse(localStorage.getItem("contract_history") || "{}")
 
 if(history[chainStore.chainName]) {
-    if(!history[chainStore.chainName].includes(contractAddress)) {
-        history[chainStore.chainName].push(contractAddress)
+    if(!history[chainStore.chainName].includes(contractName)) {
+        history[chainStore.chainName].push(contractName)
         if(history[chainStore.chainName].length > 10) {
             history[chainStore.chainName].shift()
         }
     }
 } else {
-    history[chainStore.chainName] = [contractAddress]
+    history[chainStore.chainName] = [contractName]
 }
 localStorage.setItem("contract_history", JSON.stringify(history))
 
 onMounted(() => {
-    const address = contractAddress
-    wasmStore.wasmClient.getWasmContracts(address).then((x) => {
-        info.value = x.contract_info;
+    const name = contractName
+    wasmStore.wasmClient.getWasmContracts(name).then((x) => {
+        info.value = x.contract;
     });
-    chainStore.rpc.getTxs("?order_by=2&events=execute._contract_address='{address}'", { address }, page.value).then(res => {
+    chainStore.rpc.getTxs("?order_by=2&events=execute._contract='{name}'", { name }, page.value).then(res => {
         txs.value = res
     })
 
@@ -63,8 +62,8 @@ onMounted(() => {
 
 function pageload(pageNum: number) {
     page.value.setPage(pageNum)
-    const address = String(route.query.contract)
-    chainStore.rpc.getTxs("?order_by=2&events=execute._contract_address='{address}'", { address }, page.value).then(res => {
+    const name = String(route.query.contract)
+    chainStore.rpc.getTxs("?order_by=2&events=execute._contract='{name}'", { name }, page.value).then(res => {
         txs.value = res
     })
 }
@@ -72,14 +71,14 @@ function pageload(pageNum: number) {
 
 function showFunds() {
 
-    const address = String(route.query.contract)
-    chainStore.rpc.getBankBalances(address).then(res => {
+    const name = String(route.query.contract)
+    chainStore.rpc.getBankBalances(name).then(res => {
         balances.value = res
     })
 }
 function showState() {
-    const address = String(route.query.contract)
-    selected.value = address;
+    const name = String(route.query.contract)
+    selected.value = name;
     pageloadState(1);
 }
 
@@ -101,7 +100,7 @@ function queryContract() {
     try {
         if (selectedRadio.value === 'raw') {
             wasmStore.wasmClient
-                .getWasmContractRawQuery(contractAddress, query.value)
+                .getWasmContractRawQuery(contractName, query.value)
                 .then((x) => {
                     result.value = x;
                 })
@@ -110,7 +109,7 @@ function queryContract() {
                 });
         } else {
             wasmStore.wasmClient
-                .getWasmContractSmartQuery(contractAddress, query.value)
+                .getWasmContractSmartQuery(contractName, query.value)
                 .then((x) => {
                     result.value = x;
                 })
@@ -151,7 +150,7 @@ const result = ref({});
         </div>
 
         <div class="text-center mb-4">
-            <RouterLink :to="`../${info.code_id}/contracts`"><span class="btn btn-xs text-xs mr-2"> Back </span> </RouterLink>
+            <RouterLink :to="`../${info.program_id}/contracts`"><span class="btn btn-xs text-xs mr-2"> Back </span> </RouterLink>
             <label @click="showFunds()" for="modal-contract-funds" class="btn btn-primary btn-xs text-xs mr-2">{{
                 $t('cosmwasm.btn_funds') }}</label>
             <label class="btn btn-primary btn-xs text-xs mr-2" for="modal-contract-states" @click="showState()">
@@ -161,22 +160,22 @@ const result = ref({});
                 {{ $t('cosmwasm.btn_query') }}
             </label>
             <label for="wasm_execute_contract" class="btn btn-primary btn-xs text-xs mr-2"
-                @click="dialog.open('wasm_execute_contract', { contract: contractAddress })">
+                @click="dialog.open('wasm_execute_contract', { contract: contractName })">
                 {{ $t('cosmwasm.btn_execute') }}
             </label>
 
             <label for="wasm_migrate_contract" class="btn btn-primary btn-xs text-xs mr-2"
-                @click="dialog.open('wasm_migrate_contract', { contract: contractAddress })">
+                @click="dialog.open('wasm_migrate_contract', { contract: contractName })">
                 {{ $t('cosmwasm.btn_migrate') }}
             </label>
 
             <label for="wasm_update_admin" class="btn btn-primary btn-xs text-xs mr-2"
-                @click="dialog.open('wasm_update_admin', { contract: contractAddress })">
+                @click="dialog.open('wasm_update_admin', { contract: contractName })">
                 {{ $t('cosmwasm.btn_update_admin') }}
             </label>
 
             <label for="wasm_clear_admin" class="btn btn-primary btn-xs text-xs mr-2"
-                @click="dialog.open('wasm_clear_admin', { contract: contractAddress })">
+                @click="dialog.open('wasm_clear_admin', { contract: contractName })">
                 {{ $t('cosmwasm.btn_clear_admin') }}
             </label>
 
@@ -215,8 +214,6 @@ const result = ref({});
             </table>
             <PaginationBar :limit="page.limit" :total="txs.pagination?.total" :callback="pageload" />
         </div>
-
-        <WasmVerification :contract="contractAddress"/>
 
         <div>
             <input type="checkbox" id="modal-contract-funds" class="modal-toggle" />

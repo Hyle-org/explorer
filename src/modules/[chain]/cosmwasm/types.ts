@@ -12,19 +12,9 @@ export interface CodeInfo {
 }
 
 export interface ContractInfo {
-  code_id: string;
-  creator: string;
-  admin: string;
-  label: string;
-  created: {
-    block_height: string;
-    tx_index: string;
-  };
-  ibc_port_id: string;
-  extension: {
-    type_url: string;
-    value: string;
-  };
+  verifier: string;
+  program_id: string;
+  state_digest: string;
 }
 
 export interface WasmParam {

@@ -9,7 +9,7 @@
     "rpc": [
         {"provider": "hyle", "address": "https://rpc.testnet.hyle.eu"}
     ],
-    "features": ["dashboard", "blocks", "ibc", "uptime", "parameters", "state-sync", "consensus", "supply", "widget"],
+    "features": ["dashboard", "blocks", "cosmwasm", "uptime", "parameters", "state-sync", "consensus", "supply", "widget"],
     "sdk_version": "0.50.1",
     "coin_type": "118",
     "min_tx_fee": "8000",
