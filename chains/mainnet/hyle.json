@@ -2,12 +2,12 @@
     "chain_name": "hyle",
     "api": [
         {
-            "address": "https://api.testnet.hyle.eu",
+            "address": "https://api.devnet.hyle.eu",
             "provider": "hyle"
         }
     ],
     "rpc": [
-        {"provider": "hyle", "address": "https://rpc.testnet.hyle.eu"}
+        {"provider": "hyle", "address": "https://rpc.devnet.hyle.eu"}
     ],
     "features": ["dashboard", "blocks", "contracts", "uptime", "parameters", "state-sync", "consensus", "supply", "widget"],
     "sdk_version": "0.50.1",
