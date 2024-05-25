@@ -32,39 +32,39 @@ export interface WasmRequestRegistry extends AbstractRegistry {
   }
   
   export const DEFAULT_VERSION: WasmRequestRegistry = {
-    cosmwasm_code: { url: '/hyle/hyle/zktx/v1/code', adapter },
-    cosmwasm_code_id: { url: '/hyle/hyle/zktx/v1/code/{code_id}', adapter },
+    cosmwasm_code: { url: '/hyle/zktx/v1/code', adapter },
+    cosmwasm_code_id: { url: '/hyle/zktx/v1/code/{code_id}', adapter },
     cosmwasm_code_id_contracts: {
-      url: '/hyle/hyle/zktx/v1/code/{code_id}/contracts',
+      url: '/hyle/zktx/v1/code/{code_id}/contracts',
       adapter,
     },
-    cosmwasm_param: { url: '/hyle/hyle/zktx/v1/codes/params', adapter },
+    cosmwasm_param: { url: '/hyle/zktx/v1/codes/params', adapter },
     cosmwasm_contract: {
-      url: '/hyle/hyle/zktx/v1/contract/{address}',
+      url: '/hyle/zktx/v1/contract/{address}',
       adapter,
     },
     cosmwasm_contract_history: {
-      url: '/hyle/hyle/zktx/v1/contract/{address}/history',
+      url: '/hyle/zktx/v1/contract/{address}/history',
       adapter,
     },
     cosmwasm_contract_raw_query_data: {
-      url: '/hyle/hyle/zktx/v1/contract/{address}/raw/{query_data}',
+      url: '/hyle/zktx/v1/contract/{address}/raw/{query_data}',
       adapter,
     },
     cosmwasm_contract_smart_query_data: {
-      url: '/hyle/hyle/zktx/v1/contract/{address}/smart/{query_data}',
+      url: '/hyle/zktx/v1/contract/{address}/smart/{query_data}',
       adapter,
     },
     cosmwasm_contract_state: {
-      url: '/hyle/hyle/zktx/v1/contract/{address}/state',
+      url: '/hyle/zktx/v1/contract/{address}/state',
       adapter,
     },
     cosmwasm_wasm_contracts_creator: {
-      url: '/hyle/hyle/zktx/v1/contracts/creator/{creator_address}',
+      url: '/hyle/zktx/v1/contracts/creator/{creator_address}',
       adapter,
     },
     cosmwasm_contractlist: {
-      url: '/hyle/hyle/zktx/v1/contracts',
+      url: '/hyle/zktx/v1/contracts',
       adapter,
     }
   };
