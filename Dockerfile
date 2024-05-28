@@ -1,7 +1,7 @@
-FROM node:alpine
+FROM node:18-alpine
 COPY ./ /explorer
 WORKDIR /explorer
-RUN yarn install && yarn build
+RUN yarn --ignore-engines && yarn build
 
 FROM nginx:latest
 RUN mkdir /explorer
